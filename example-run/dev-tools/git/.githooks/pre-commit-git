@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Pre-commit git hook
+# This hook runs before each commit to ensure code quality
+
+set -e
+
+echo "Running pre-commit checks..."
+
+# Change to the project root directory
+cd "$(git rev-parse --show-toplevel)"
+
+# Run the pre-commit script
+./dev-tools/git/pre-commit.sh
+
+echo "Pre-commit checks passed!"

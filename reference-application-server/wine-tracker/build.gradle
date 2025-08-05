@@ -1,0 +1,102 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id "org.sonarqube" version "6.2.0.5505"
+	id 'jacoco'
+	id 'checkstyle'
+	id 'pmd'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+checkstyle {
+	toolVersion = '10.20.2'
+	configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+checkstyleMain {
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+checkstyleTest {
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+pmd {
+	toolVersion = '7.8.0'
+	ruleSetFiles = files('config/pmd/pmd-ruleset.xml')
+	ignoreFailures = false
+}
+
+pmdMain {
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+pmdTest {
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "birgitta410_reference-application"
+		property "sonar.organization", "birgitta410"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}

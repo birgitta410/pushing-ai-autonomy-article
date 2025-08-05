@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "reference-application": {
+      "command": "node",
+      "args": [
+        "../reference-application-server/build/index.js"
+      ],
+      "disabled": false,
+      "alwaysAllow": [
+        "get_sample_entity",
+        "get_sample_repository",
+        "get_sample_service",
+        "get_sample_repository_test",
+        "get_sample_service_test",
+        "get_sample_controller",
+        "get_sample_controller_test"
+      ]
+    }
+  }
+}

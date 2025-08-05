@@ -1,0 +1,11 @@
+{
+  "codeExamplePaths": {
+    "controller": "src/main/java/com/thoughtworks/winetracker/wine/wine/controller/WineController.java",
+    "entity": "src/main/java/com/thoughtworks/winetracker/wine/wine/entity/Wine.java",
+    "repository": "src/main/java/com/thoughtworks/winetracker/wine/wine/repository/WineRepository.java",
+    "service": "src/main/java/com/thoughtworks/winetracker/wine/wine/service/WineService.java",
+    "controllerTest": "src/test/java/com/thoughtworks/winetracker/wine/producer/controller/ProducerControllerTest.java",
+    "repositoryTest": "src/test/java/com/thoughtworks/winetracker/wine/producer/repository/ProducerRepositoryTest.java",
+    "serviceTest": "src/test/java/com/thoughtworks/winetracker/wine/wine/service/WineServiceTest.java"
+  }
+}

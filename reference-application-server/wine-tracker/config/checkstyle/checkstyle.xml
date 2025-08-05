@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <property name="severity" value="warning"/>
+    <property name="fileExtensions" value="java, properties, xml"/>
+
+    <!-- Excludes all 'module-info.java' files              -->
+    <!-- See https://checkstyle.org/config_filefilters.html -->
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="module\-info\.java$"/>
+    </module>
+
+    <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
+    <module name="SuppressionFilter">
+        <property name="file" value="${org.checkstyle.sun.suppressionfilter.config}"
+                  default="checkstyle-suppressions.xml" />
+        <property name="optional" value="true"/>
+    </module>
+
+    <!-- Checks that a package-info.java file exists for each package.     -->
+    <!-- See https://checkstyle.org/config_javadoc.html#JavadocPackage -->
+    <!-- <module name="JavadocPackage"/> -->
+
+    <!-- Checks whether files end with a new line.                        -->
+    <!-- See https://checkstyle.org/config_misc.html#NewlineAtEndOfFile -->
+    <module name="NewlineAtEndOfFile">
+        <property name="severity" value="info"/>
+    </module>
+
+    <!-- Checks that property files contain the same keys.         -->
+    <!-- See https://checkstyle.org/config_misc.html#Translation -->
+    <module name="Translation"/>
+
+    <!-- Checks for Size Violations.                    -->
+    <!-- See https://checkstyle.org/config_sizes.html -->
+    <module name="FileLength">
+        <property name="severity" value="error"/>
+    </module>
+    <module name="LineLength">
+        <property name="fileExtensions" value="java"/>
+        <property name="max" value="150"/>
+        <property name="severity" value="warning"/>
+    </module>
+
+    <!-- Checks for whitespace                               -->
+    <!-- See https://checkstyle.org/config_whitespace.html -->
+    <module name="FileTabCharacter">
+        <property name="severity" value="info"/>
+    </module>
+
+    <!-- Miscellaneous other checks.                   -->
+    <!-- See https://checkstyle.org/config_misc.html -->
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <property name="minimum" value="0"/>
+        <property name="maximum" value="0"/>
+        <property name="message" value="Line has trailing spaces."/>
+        <property name="severity" value="info"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- Checks for Javadoc comments - downgraded to info/warning -->
+        <!-- See https://checkstyle.org/config_javadoc.html -->
+        <module name="InvalidJavadocPosition">
+            <property name="severity" value="warning"/>
+        </module>
+        <!-- Disabled overly strict javadoc requirements -->
+        <!-- <module name="JavadocMethod"/> -->
+        <!-- <module name="JavadocType"/> -->
+        <!-- <module name="JavadocVariable"/> -->
+        <!-- <module name="JavadocStyle"/> -->
+        <!-- <module name="MissingJavadocMethod"/> -->
+
+        <!-- Checks for Naming Conventions - these are important errors -->
+        <!-- See https://checkstyle.org/config_naming.html -->
+        <module name="ConstantName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="LocalFinalVariableName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="MemberName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="MethodName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="PackageName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ParameterName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="StaticVariableName">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="TypeName">
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Checks for imports - important for code quality -->
+        <!-- See https://checkstyle.org/config_imports.html -->
+        <module name="AvoidStarImport">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="IllegalImport">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="RedundantImport">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="false"/>
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Checks for Size Violations - these can be serious -->
+        <!-- See https://checkstyle.org/config_sizes.html -->
+        <module name="MethodLength">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="ParameterNumber">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Checks for whitespace - downgraded to info/warning -->
+        <!-- See https://checkstyle.org/config_whitespace.html -->
+        <module name="EmptyForIteratorPad">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="GenericWhitespace">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="MethodParamPad">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="NoWhitespaceAfter">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="NoWhitespaceBefore">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="OperatorWrap">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="ParenPad">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="TypecastParenPad">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="WhitespaceAfter">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="WhitespaceAround">
+            <property name="severity" value="info"/>
+        </module>
+
+        <!-- Modifier Checks - these are important -->
+        <!-- See https://checkstyle.org/config_modifier.html -->
+        <module name="ModifierOrder">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="RedundantModifier">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Checks for blocks - these are important -->
+        <!-- See https://checkstyle.org/config_blocks.html -->
+        <module name="AvoidNestedBlocks">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="EmptyBlock">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="LeftCurly">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="NeedBraces">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="RightCurly">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Checks for common coding problems - these are critical -->
+        <!-- See https://checkstyle.org/config_coding.html -->
+        <module name="EmptyStatement">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="EqualsHashCode">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="HiddenField">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalInstantiation">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="InnerAssignment">
+            <property name="severity" value="warning"/>
+        </module>
+        <!-- Magic numbers are often acceptable in DTOs/config -->
+        <!-- <module name="MagicNumber"/> -->
+        <module name="MissingSwitchDefault">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="MultipleVariableDeclarations">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="SimplifyBooleanExpression">
+            <property name="severity" value="error"/>
+        </module>
+        <module name="SimplifyBooleanReturn">
+            <property name="severity" value="error"/>
+        </module>
+
+        <!-- Checks for class design - mostly warnings -->
+        <!-- See https://checkstyle.org/config_design.html -->
+        <!-- <module name="DesignForExtension"/> -->
+        <module name="FinalClass">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="HideUtilityClassConstructor">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="InterfaceIsType">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="VisibilityModifier">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- Miscellaneous other checks - mostly info -->
+        <!-- See https://checkstyle.org/config_misc.html -->
+        <module name="ArrayTypeStyle">
+            <property name="severity" value="warning"/>
+        </module>
+        <!-- <module name="FinalParameters"/> -->
+        <module name="TodoComment">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="UpperEll">
+            <property name="severity" value="warning"/>
+        </module>
+
+        <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
+        <module name="SuppressionXpathFilter">
+            <property name="file" value="${org.checkstyle.sun.suppressionxpathfilter.config}"
+                      default="checkstyle-xpath-suppressions.xml" />
+            <property name="optional" value="true"/>
+        </module>
+    </module>
+</module>

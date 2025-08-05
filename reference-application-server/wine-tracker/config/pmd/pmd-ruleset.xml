@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<ruleset name="Custom PMD Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>Custom PMD ruleset for Spring Boot application</description>
+
+    <!-- Best Practices -->
+    <rule ref="category/java/bestpractices.xml">
+        <!-- Exclude overly strict rules -->
+        <exclude name="GuardLogStatement"/>
+        <exclude name="JUnitTestContainsTooManyAsserts"/>
+        <exclude name="JUnitAssertionsShouldIncludeMessage"/>
+        <exclude name="AvoidReassigningParameters"/>
+        <exclude name="LiteralsFirstInComparisons"/>
+    </rule>
+
+    <!-- Code Style -->
+    <rule ref="category/java/codestyle.xml">
+        <!-- Exclude overly strict formatting rules -->
+        <exclude name="AtLeastOneConstructor"/>
+        <exclude name="OnlyOneReturn"/>
+        <exclude name="TooManyStaticImports"/>
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="DefaultPackage"/>
+        <exclude name="CallSuperInConstructor"/>
+        <exclude name="UselessParentheses"/>
+        <exclude name="UnnecessaryLocalBeforeReturn"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+        <exclude name="ShortMethodName"/>
+        <exclude name="ShortClassName"/>
+        <exclude name="ClassNamingConventions"/>
+    </rule>
+
+    <!-- Design -->
+    <rule ref="category/java/design.xml">
+        <!-- Adjust complexity thresholds -->
+        <exclude name="TooManyMethods"/>
+        <exclude name="LawOfDemeter"/>
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="DataClass"/>
+        <exclude name="UseObjectForClearerAPI"/>
+    </rule>
+
+    <!-- Adjust CyclomaticComplexity threshold -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="classReportLevel" value="80"/>
+            <property name="methodReportLevel" value="15"/>
+        </properties>
+    </rule>
+
+    <!-- Adjust NPathComplexity threshold -->
+    <rule ref="category/java/design.xml/NPathComplexity">
+        <properties>
+            <property name="reportLevel" value="500"/>
+        </properties>
+    </rule>
+
+    <!-- Documentation -->
+    <rule ref="category/java/documentation.xml">
+        <!-- Exclude strict JavaDoc requirements -->
+        <exclude name="CommentRequired"/>
+        <exclude name="CommentSize"/>
+        <exclude name="UncommentedEmptyConstructor"/>
+        <exclude name="UncommentedEmptyMethodBody"/>
+    </rule>
+
+    <!-- Error Prone -->
+    <rule ref="category/java/errorprone.xml">
+        <!-- Exclude overly strict rules -->
+        <exclude name="BeanMembersShouldSerialize"/>
+        <exclude name="DataflowAnomalyAnalysis"/>
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+        <exclude name="UseProperClassLoader"/>
+        <exclude name="NullAssignment"/>
+        <exclude name="AvoidLiteralsInIfCondition"/>
+        <exclude name="AvoidDuplicateLiterals"/>
+    </rule>
+
+    <!-- Multithreading -->
+    <rule ref="category/java/multithreading.xml">
+        <!-- Exclude rules not relevant for Spring Boot -->
+        <exclude name="UseConcurrentHashMap"/>
+        <exclude name="AvoidSynchronizedAtMethodLevel"/>
+    </rule>
+
+    <!-- Performance -->
+    <rule ref="category/java/performance.xml">
+        <!-- Exclude micro-optimizations -->
+        <exclude name="AvoidInstantiatingObjectsInLoops"/>
+        <exclude name="UseStringBufferForStringAppends"/>
+        <exclude name="ConsecutiveLiteralAppends"/>
+        <exclude name="UseIndexOfChar"/>
+        <exclude name="SimplifyStartsWith"/>
+        <exclude name="InefficientStringBuffering"/>
+    </rule>
+
+    <!-- Security -->
+    <rule ref="category/java/security.xml"/>
+
+</ruleset>
